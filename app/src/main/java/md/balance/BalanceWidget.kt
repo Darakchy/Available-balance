@@ -21,6 +21,12 @@ fun prefs(context: Context): SharedPreferences = context.getSharedPreferences("b
 class BalanceWidget : AppWidgetProvider() {
     override fun onUpdate(context: Context, manager: AppWidgetManager, ids: IntArray) = updateAll(context)
 
+    override fun onReceive(context: Context, intent: Intent) {
+        super.onReceive(context, intent)
+        // Redraw widget text in the new language when the phone language changes.
+        if (intent.action == Intent.ACTION_LOCALE_CHANGED) updateAll(context)
+    }
+
     companion object {
         fun updateAll(context: Context) {
             val p = prefs(context)
@@ -31,8 +37,8 @@ class BalanceWidget : AppWidgetProvider() {
                 setTextViewText(
                     R.id.info,
                     when {
-                        card == null -> "Укажите карту"
-                        time == 0L -> "•$card · нет данных"
+                        card == null -> context.getString(R.string.set_card)
+                        time == 0L -> context.getString(R.string.no_data, card)
                         else -> "•$card · " + SimpleDateFormat("dd.MM HH:mm", Locale.getDefault()).format(Date(time))
                     }
                 )

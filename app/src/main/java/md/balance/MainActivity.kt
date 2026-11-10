@@ -20,27 +20,27 @@ class MainActivity : Activity() {
         val p = prefs(this)
 
         val cardInput = EditText(this).apply {
-            hint = "Последние 4 цифры карты"
+            hint = getString(R.string.card_hint)
             inputType = InputType.TYPE_CLASS_NUMBER
             filters = arrayOf(InputFilter.LengthFilter(4))
             setText(p.getString(KEY_CARD, ""))
         }
         val save = Button(this).apply {
-            text = "Сохранить"
+            text = getString(R.string.save)
             setOnClickListener {
                 val card = cardInput.text.toString()
                 if (!Regex("""\d{4}""").matches(card)) {
-                    Toast.makeText(this@MainActivity, "Нужно ровно 4 цифры", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@MainActivity, getString(R.string.need_4_digits), Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
                 // A different card invalidates the stored balance.
                 if (card != p.getString(KEY_CARD, null)) p.edit().clear().putString(KEY_CARD, card).apply()
                 BalanceWidget.updateAll(this@MainActivity)
-                Toast.makeText(this@MainActivity, "Сохранено", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, getString(R.string.saved), Toast.LENGTH_SHORT).show()
             }
         }
         val access = Button(this).apply {
-            text = "Дать доступ к уведомлениям"
+            text = getString(R.string.grant_access)
             setOnClickListener { startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS)) }
         }
         status = TextView(this)
@@ -63,6 +63,6 @@ class MainActivity : Activity() {
         super.onResume()
         val granted = Settings.Secure.getString(contentResolver, "enabled_notification_listeners")
             ?.contains(packageName) == true
-        status.text = if (granted) "Доступ к уведомлениям: есть ✓" else "Доступ к уведомлениям: НЕТ — нажмите кнопку выше"
+        status.text = getString(if (granted) R.string.access_on else R.string.access_off)
     }
 }

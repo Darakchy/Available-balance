@@ -1,8 +1,11 @@
 package md.balance
 
-// maib: "... card ***1234[ any words]. Available balance: 100.00 MDL."
+// maib, any app language: "... ***1234 [any words]. Available balance: 100.00 MDL."
+// Card = "***" + 4 digits, balance = number + currency after one of the known phrases.
 // [^*] lets words sit between card and balance, but never another "***XXXX" card.
-private val PATTERN = Regex("""card \*+(\d{4})\b[^*]*?Available balance:\s*([\d.,\s]*\d)\s*([A-Z]{3})""")
+private val PATTERN = Regex(
+    """\*{3}(\d{4})\b[^*]*?(?:Available balance|Sold disponibil|Доступный остаток):\s*([\d.,\s]*\d)\s*([A-Z]{3})"""
+)
 
 /** Returns (last 4 digits, "100.00 MDL") or null if the text is not a maib balance message. */
 fun parseBalance(text: CharSequence): Pair<String, String>? {

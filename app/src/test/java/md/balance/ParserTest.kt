@@ -25,5 +25,17 @@ class ParserTest {
         parseBalance("The P2P transfer of 2 MDL has been received on card ***5678. Available balance: 1,002 MDL.")
     )
 
+    @Test fun russian() = assertEquals(
+        "1234" to "115.00 MDL",
+        parseBalance("Перевод P2P на сумму 15 MDL был зачислен на карту ***1234. Доступный остаток: 115.00 MDL.")
+    )
+
+    @Test fun romanian() = assertEquals(
+        "1234" to "130.00 MDL",
+        parseBalance("Transferul P2P în sumă de 15 MDL a fost primit pe cardul ***1234. Sold disponibil: 130.00 MDL.")
+    )
+
+    @Test fun balanceWithoutCard() = assertNull(parseBalance("Available balance: 100.00 MDL."))
+
     @Test fun unrelatedText() = assertNull(parseBalance("Your OTP code is 1234"))
 }

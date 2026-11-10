@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Sold</string>
+    <string name="card_hint">Ultimele 4 cifre ale cardului</string>
+    <string name="save">Salvează</string>
+    <string name="grant_access">Acordă acces la notificări</string>
+    <string name="need_4_digits">Introdu exact 4 cifre</string>
+    <string name="saved">Salvat</string>
+    <string name="access_on">Acces la notificări: acordat ✓</string>
+    <string name="access_off">Acces la notificări: NU — apasă butonul de mai sus</string>
+    <string name="set_card">Setează cardul</string>
+    <string name="no_data">•%1$s · fără date</string>
+</resources>

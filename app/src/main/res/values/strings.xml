@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">Остаток</string>
+    <!-- English is the default: used for every phone language except Russian and Romanian. -->
+    <string name="app_name">Balance</string>
+    <string name="card_hint">Last 4 digits of the card</string>
+    <string name="save">Save</string>
+    <string name="grant_access">Grant notification access</string>
+    <string name="need_4_digits">Enter exactly 4 digits</string>
+    <string name="saved">Saved</string>
+    <string name="access_on">Notification access: granted ✓</string>
+    <string name="access_off">Notification access: NOT granted — tap the button above</string>
+    <string name="set_card">Set your card</string>
+    <string name="no_data">•%1$s · no data</string>
 </resources>

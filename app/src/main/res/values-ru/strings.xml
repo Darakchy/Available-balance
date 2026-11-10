@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Остаток</string>
+    <string name="card_hint">Последние 4 цифры карты</string>
+    <string name="save">Сохранить</string>
+    <string name="grant_access">Дать доступ к уведомлениям</string>
+    <string name="need_4_digits">Нужно ровно 4 цифры</string>
+    <string name="saved">Сохранено</string>
+    <string name="access_on">Доступ к уведомлениям: есть ✓</string>
+    <string name="access_off">Доступ к уведомлениям: НЕТ — нажмите кнопку выше</string>
+    <string name="set_card">Укажите карту</string>
+    <string name="no_data">•%1$s · нет данных</string>
+</resources>
